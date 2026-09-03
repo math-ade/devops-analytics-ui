@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise DevOps Metrics & Analytics Dashboard</title>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        :root { --bg-dark: #0f172a; --card-bg: #1e293b; --accent: #38bdf8; --success: #22c55e; --text: #f8fafc; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-dark); color: var(--text); margin: 0; padding: 20px; }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 15px; margin-bottom: 25px; }
+        h1 { margin: 0; font-size: 1.8rem; color: var(--accent); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background-color: var(--card-bg); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3); border: 1px solid #334155; }
+        .metric-value { font-size: 2rem; font-weight: bold; color: var(--success); margin-top: 10px; }
+        .chart-container { background-color: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid #334155; }
+        .badge { background: #0369a1; color: white; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>🚀 DevOps Platform Analytics</h1>
+            <p style="margin: 5px 0 0 0; color: #94a3b8;">Real-Time CI/CD Orchestration & Telemetry Grid</p>
+        </div>
+        <div>
+            <span class="badge">Environment: STAGING-TOMCAT-01</span>
+            <span class="badge" style="background: #15803d;">Status: HEALTHY</span>
+        </div>
+    </header>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Deployment Frequency</h3>
+            <div class="metric-value">14.2 / day</div>
+            <p style="color: #94a3b8; font-size: 0.85rem;">+12% compared to last week</p>
+        </div>
+        <div class="card">
+            <h3>Lead Time for Changes</h3>
+            <div class="metric-value">42 mins</div>
+            <p style="color: #94a3b8; font-size: 0.85rem;">Automated via Jenkins & GitHub</p>
+        </div>
+        <div class="card">
+            <h3>Change Failure Rate</h3>
+            <div class="metric-value" style="color: #38bdf8;">0.04%</div>
+            <p style="color: #94a3b8; font-size: 0.85rem;">Zero-downtime rolling deploys</p>
+        </div>
+        <div class="card">
+            <h3>Mean Time to Recovery</h3>
+            <div class="metric-value">12 mins</div>
+            <p style="color: #94a3b8; font-size: 0.85rem;">Automated container teardown</p>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h3>Pipeline Throughput Telemetry</h3>
+        <p style="color: #94a3b8; font-size: 0.9rem;">Historical build success vs deployment volume across clusters.</p>
+        <div style="height: 250px; display: flex; align-items: center; justify-content: center; color: #64748b; border: 1px dashed #334155; border-radius: 8px;">
+            [ Live Telemetry Chart Engine Initialized: Tomcat Middleware Host ]
+        </div>
+    </div>
+</body>
+</html>
