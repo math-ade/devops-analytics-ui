@@ -1,3 +1,58 @@
+==================================================================================================
+                           ENTERPRISE DEVOPSTACK ENGINE & LIFECYCLE FLOW
+==================================================================================================
+
+  [ GitHub Code Repo ] ──( Webhook Git-Push )──> [ Jenkins CI Controller ] (Port: 8080)
+                                                          │
+                                                ( Automated Pipeline Build )
+                                                          │
+                                                          ▼
+                                            [ Artifact Packaging Matrix ]
+                                            ( devops-dashboard.war / yaml )
+                                                          │
+                                          ┌───────────────┴───────────────┐
+                                          ▼                               ▼
+                              [ Ansible Semaphore UI ]          [ Local Terraform CLI ]
+                                    (Port: 3000)                   (Infrastructure Blueprint)
+                                          │                               │
+                              ( Configuration Audit )           ( Local Resource Ingestion )
+                                          │                               │
+                                          ▼                               ▼
+                             ┌─────────────────────────┐     ┌─────────────────────────┐
+                             │  Apache Tomcat Server   │     │  Kubernetes (Minikube)  │
+                             │      (Port: 8081)       │     │     Control Plane       │
+                             └─────────────────────────┘     └────────────┬────────────┘
+                                   [ Staging Target ]                     │
+                                                                 ( Manifest Ingestion )
+                                                                          │
+                                                                          ▼
+                                                             ┌─────────────────────────┐
+                                                             │ NodePort Ingress Router │
+                                                             │      (Port: 30080)      │
+                                                             └────────────┬────────────┘
+                                                                          │
+                                                      ┌───────────────────┼───────────────────┐
+                                                      ▼                   ▼                   ▼
+                                                ┌───────────┐       ┌───────────┐       ┌───────────┐
+                                                │ Pod 1 (HA)│       │ Pod 2 (HA)│       │ Pod 3 (HA)│
+                                                │ [Nginx]   │       │ [Nginx]   │       │ [Nginx]   │
+                                                └─────┬─────┘       └─────┬─────┘       └─────┬─────┘
+                                                      │                   │                   │
+                                                      └───────────────────┼───────────────────┘
+                                                                          ▼ (Runtime Config Volume)
+                                                            ┌───────────────────────────┐
+                                                            │   Kubernetes ConfigMap    │
+                                                            │ [ Dynamic Telemetry UI ]  │
+                                                            └───────────────────────────┘
+
+==================================================================================================
+                      CENTRALIZED MANAGEMENT & OBSERVABILITY PLANE (PORTAINER UI)
+================────────────────────────────────==================================================
+  All runtimes (Jenkins, Tomcat, Ansible Semaphore) operate inside a high-performance, native
+  Linux Docker daemon container fabric monitored visually via Portainer (Port: 9000).
+==================================================================================================
+
+
 # 🚀 Enterprise DevOps Platform Analytics & Cloud-Native Mesh
 
 [![Kubernetes](https://shields.io)](https://kubernetes.io)
